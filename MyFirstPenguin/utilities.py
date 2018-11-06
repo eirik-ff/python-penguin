@@ -1,5 +1,6 @@
 from movement import *
 import math
+from eirik import *
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:
@@ -37,8 +38,15 @@ def moveTowardsPoint(body, pointX, pointY):
     elif penguinPositionY > pointY:
         plannedAction = MOVE_UP[bodyDirection]
 
-    if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
+    if enemyNearby():
+        if shootIfPossible(body):
+            plannedAction = SHOOT
+        else:
+            plannedAction = lookAtEnemy()
+
+    elif plannedAction == ADVANCE and wallInFrontOfPenguin(body):
         plannedAction = SHOOT
+
     return plannedAction
 
 def moveTowardsCenterOfMap(body):
