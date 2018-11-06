@@ -1,4 +1,5 @@
 from movement import *
+from math import sqrt
 
 def lookAtEnemy(body):
     """
@@ -56,3 +57,23 @@ def lookAtEnemy(body):
 
 
     return action
+
+
+def closestPowerup(body):
+    """
+    gives x, y for closest powerup
+    """
+    bonus_list = body["bonusTiles"]
+    you = body['you']
+    x = you['x']
+    y = you['y']
+
+    m = 1000000
+    m_bonus = bonus[0]
+    for bonus in bonus_list:
+        d = sqrt( (x - bonus['x'])**2 + (y - bonus['y'])**2 )
+        if d < m:
+            m = d
+            m_bonus = bonus
+
+    return m_bonus['x'], m_bonus['y']
