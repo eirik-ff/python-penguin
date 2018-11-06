@@ -1,5 +1,5 @@
 from movement import *
-from math import sqrt
+from math import sqrt, atan2, pi
 
 def lookAtEnemy(body):
     """
@@ -27,23 +27,20 @@ def lookAtEnemy(body):
     ex = enemy['x']
     ey = enemy['y']
 
-    if ex > x and ex < y and d != "right": # 1
+    dx = ex - x
+    dy = ey - y
+    theta = atan2(dx, dy)
+    print(x, y, ex, ey, theta)
+
+    if -pi / 4 <= theta <= pi / 4:
         new_d = "right"
-    elif ex > x and ex < y and d != "top": # 2
+    elif pi / 4 <= theta <= 3 * pi / 4:
         new_d = "top"
-    elif ex < x and ey < y and d != "top": # 3
-        new_d = "top"
-    elif ex < x and ey < y and d != "left": # 4
-        new_d = "left"
-    elif ex < x and ey > y and d != "left": # 5
-        new_d = "left"
-    elif ex < x and ey > y and d != "bottom": # 6
+    elif -3 * pi / 4 <= theta <= -pi / 4:
         new_d = "bottom"
-    elif ex > x and ey > y and d != "bottom": # 7
-        new_d = "bottom"
-    elif ex > x and ey > y and d != "right": # 8
-        new_d = "right"
-    
+    else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
+        new_d = "left"
+
 
     d_val = DIR_VALUE[d]
     new_d_val = DIR_VALUE[new_d]
@@ -54,7 +51,6 @@ def lookAtEnemy(body):
     elif dist < 0:
         action = ROTATE_RIGHT
 
-
     return action
 
 
@@ -63,12 +59,15 @@ def closestPowerup(body):
     gives x, y for closest powerup
     """
     bonus_list = body["bonusTiles"]
+    if len(bonus_list) == 0:
+        return -1, -1
+
     you = body['you']
     x = you['x']
     y = you['y']
 
     m = 1000000
-    m_bonus = bonus[0]
+    m_bonus = bonus_list[0]
     for bonus in bonus_list:
         d = sqrt( (x - bonus['x'])**2 + (y - bonus['y'])**2 )
         if d < m:

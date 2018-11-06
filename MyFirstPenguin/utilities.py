@@ -1,6 +1,7 @@
 from movement import *
 import math
 from eirik import *
+from martin import *
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:
