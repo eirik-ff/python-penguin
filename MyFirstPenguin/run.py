@@ -69,7 +69,7 @@ env = os.environ
 req_params_query = env['REQ_PARAMS_QUERY']
 responseBody = open(env['res'], 'w')
 
-i = 0
+
 response = {}
 returnObject = {}
 if req_params_query == "info":
@@ -77,14 +77,7 @@ if req_params_query == "info":
     returnObject["team"] = "Team Python 3"
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
-
-    action_list = [ADVANCE, ROTATE_LEFT, ADVANCE, ROTATE_LEFT, ADVANCE, ROTATE_LEFT, ADVANCE]
-    action = action_list[i]
-    
-    i += 1
-    if i >= len(action_list): i = 0
-
-    returnObject["command"] = action #chooseAction(body)
+    returnObject["command"] = chooseAction(body)
 
 response["body"] = returnObject
 responseBody.write(json.dumps(response))
