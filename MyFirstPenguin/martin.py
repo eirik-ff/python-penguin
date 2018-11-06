@@ -1,6 +1,7 @@
 from movement import *
 
 def shootIfPossible(body):
+    
     you = body["you"]
     direction = you["direction"]
     myPosX = you["x"]
