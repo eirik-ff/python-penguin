@@ -29,7 +29,7 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    theta = atan2(dx, -dy) + pi
+    theta = atan2(dx, -dy)
     print("x y ex ey theta: ", x, y, ex, ey, theta)
 
     if -pi / 4 <= theta <= pi / 4:
