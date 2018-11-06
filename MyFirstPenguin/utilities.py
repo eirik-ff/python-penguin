@@ -26,7 +26,7 @@ def wallInFrontOfPenguin(body):
 
 def enemyNearby(body):
     try:
-        temp = body["enemies"][0]["x"]
+        temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
         return True
     except:
         return False
@@ -46,7 +46,7 @@ def moveTowardsPoint(body, pointX, pointY):
     elif penguinPositionY > pointY:
         plannedAction = MOVE_UP[bodyDirection]
 
-    if enemyNearby(body):
+    if enemyNearby(body):       #battle formation
         if shootIfPossible(body):
             plannedAction = SHOOT
         else:
@@ -65,10 +65,9 @@ def moveTowardsCenterOfMap(body):
 def chooseAction(body):
     action = PASS
     #action = moveTowardsCenterOfMap(body)
-    try:
-        action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
-    except:
-        action = moveTowardsCenterOfMap(body)
+    #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    bx, by = closestPowerup(body)
+    action = moveTowardsPoint(body, bx, by)
     return action
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
