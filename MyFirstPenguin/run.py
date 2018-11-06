@@ -6,6 +6,10 @@ from utilities import *
 from movement import *
 
 
+"""
+Next level tactics:
+* hvis en power up forsvinner fra mappet vet vi hvor fienden er
+"""
 
 
 env = os.environ

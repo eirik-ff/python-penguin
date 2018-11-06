@@ -4,7 +4,6 @@ from math import sqrt
 def lookAtEnemy(body):
     """
     skal snu seg mot fienden
-    hvis fienden er innenfor weapon range, skyt
     """
     DIR_VALUE = {
         "right": 0,
