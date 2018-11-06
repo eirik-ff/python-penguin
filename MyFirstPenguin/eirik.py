@@ -43,6 +43,7 @@ def lookAtEnemy(body):
         new_d = "bottom"
     elif ex > x and ey > y and d != "right": # 8
         new_d = "right"
+    
 
     d_val = DIR_VALUE[d]
     new_d_val = DIR_VALUE[new_d]
