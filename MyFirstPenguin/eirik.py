@@ -29,17 +29,21 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    theta = atan2(dx, -dy)
-    print(x, y, ex, ey, theta)
+    theta = atan2(dx, -dy) + pi
+    print("x\ty\tex\tey\ttheta:\n", x, y, ex, ey, theta, sep="\t")
 
     if -pi / 4 <= theta <= pi / 4:
         new_d = "right"
+        print("new dir right")
     elif pi / 4 <= theta <= 3 * pi / 4:
         new_d = "top"
+        print("new dir top")
     elif -3 * pi / 4 <= theta <= -pi / 4:
         new_d = "bottom"
+        print("new dir bottom")
     else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
         new_d = "left"
+        print("new dir left")
 
 
     d_val = DIR_VALUE[d]
