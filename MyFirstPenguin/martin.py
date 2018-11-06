@@ -5,7 +5,7 @@ def shootIfPossible(body):
     direction = you["direction"]
     myPosX = you["x"]
     myPosY = you["y"]
-    enemy = body["enemies"]
+    enemy = body["enemies"][0]
     try:
         enX = enemy["x"]
         enY = enemy["y"]
@@ -22,4 +22,4 @@ def shootIfPossible(body):
         return True
     else:
         return False
-    
+
