@@ -28,7 +28,7 @@ def moveTowardsPoint(body, pointX, pointY):
     bodyDirection = body["you"]["direction"]
 
     if penguinPositionX < pointX:
-        plannedAction =  MOVE_RIGHT[bodyDirection]
+        plannedAction = MOVE_RIGHT[bodyDirection]
     elif penguinPositionX > pointX:
         plannedAction = MOVE_LEFT[bodyDirection]
     elif penguinPositionY < pointY:
