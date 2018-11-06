@@ -6,8 +6,6 @@ from utilities import *
 from movement import *
 
 
-
-
 env = os.environ
 req_params_query = env['REQ_PARAMS_QUERY']
 responseBody = open(env['res'], 'w')
