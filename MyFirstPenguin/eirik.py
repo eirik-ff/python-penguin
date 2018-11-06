@@ -30,7 +30,7 @@ def lookAtEnemy(body):
     dx = ex - x
     dy = ey - y
     theta = atan2(dx, -dy) + pi
-    print("x\ty\tex\tey\ttheta:\n", x, y, ex, ey, theta, "\n")
+    print("x y ex ey theta: ", x, y, ex, ey, theta)
 
     if -pi / 4 <= theta <= pi / 4:
         new_d = "right"
@@ -49,8 +49,12 @@ def lookAtEnemy(body):
     d_val = DIR_VALUE[d]
     new_d_val = DIR_VALUE[new_d]
 
-    dist = d_val - new_d_val
-    if dist > 0:
+    dist = new_d_val - d_val
+    if d_val == 0 and new_d == 3:
+        action = ROTATE_RIGHT
+    elif d_val == 3 and new_d == 0:
+        action = ROTATE_LEFT
+    elif dist > 0:
         action = ROTATE_LEFT
     elif dist < 0:
         action = ROTATE_RIGHT
