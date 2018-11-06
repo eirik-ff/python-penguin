@@ -49,7 +49,10 @@ def moveTowardsCenterOfMap(body):
 def chooseAction(body):
     action = PASS
     #action = moveTowardsCenterOfMap(body)
-    action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    try:
+        action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    except:
+        action = moveTowardsCenterOfMap(body)
     return action
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
