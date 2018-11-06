@@ -1,5 +1,6 @@
 from movement import *
 import math
+from eirik import *
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:
@@ -22,6 +23,14 @@ def wallInFrontOfPenguin(body):
         xValueToCheckForWall += 1
     return doesCellContainWall(body["walls"], xValueToCheckForWall, yValueToCheckForWall)
 
+
+def enemyNearby(body):
+    try:
+        temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
+        return True
+    except:
+        return False
+
 def moveTowardsPoint(body, pointX, pointY):
     penguinPositionX = body["you"]["x"]
     penguinPositionY = body["you"]["y"]
@@ -37,8 +46,15 @@ def moveTowardsPoint(body, pointX, pointY):
     elif penguinPositionY > pointY:
         plannedAction = MOVE_UP[bodyDirection]
 
-    if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
+    if enemyNearby(body):       #battle formation
+        if shootIfPossible(body):
+            plannedAction = SHOOT
+        else:
+            plannedAction = lookAtEnemy(body)
+
+    elif plannedAction == ADVANCE and wallInFrontOfPenguin(body):
         plannedAction = SHOOT
+
     return plannedAction
 
 def moveTowardsCenterOfMap(body):
@@ -49,10 +65,9 @@ def moveTowardsCenterOfMap(body):
 def chooseAction(body):
     action = PASS
     #action = moveTowardsCenterOfMap(body)
-    try:
-        action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
-    except:
-        action = moveTowardsCenterOfMap(body)
+    #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    bx, by = closestPowerup(body)
+    action = moveTowardsPoint(body, bx, by)
     return action
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
