@@ -55,6 +55,8 @@ def moveTowardsPoint(body, pointX, pointY):
 
     if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
         plannedAction = SHOOT
+    #elif plannedAction == ADVANCE and distanceToEnemy(body) <= body["enemies"]["weaponRange"]:
+    #    plannedAction == lookAtEnemy(body)
     return plannedAction
 
 def moveTowardsCenterOfMap(body):
@@ -64,7 +66,8 @@ def moveTowardsCenterOfMap(body):
 
 def chooseAction(body):
     action = PASS
-    action = moveTowardsCenterOfMap(body)
+    #action = moveTowardsCenterOfMap(body)
+    action = moveTowardsPoint(body, body["enemies"]["x"], body["enemies"]["y"])
     return action
 
 env = os.environ
