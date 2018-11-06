@@ -30,7 +30,7 @@ def lookAtEnemy(body):
     dx = ex - x
     dy = ey - y
     theta = atan2(dx, -dy) + pi
-    print("x\ty\tex\tey\ttheta:\n", x, y, ex, ey, theta, "\n", sep="\t")
+    print("x\ty\tex\tey\ttheta:\n", x, y, ex, ey, theta, "\n")
 
     if -pi / 4 <= theta <= pi / 4:
         new_d = "right"
