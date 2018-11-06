@@ -49,3 +49,16 @@ def chooseAction(body):
     action = PASS
     action = moveTowardsCenterOfMap(body)
     return action
+
+def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
+    distX = myPosX - enPosX
+    distY = myPosY - enPosY
+    return distX, distY
+
+def smallestDistanceToEnemy(body, myPosX, myPosY, enPosX, enPosY):
+    distX, distY = distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY)
+    if abs(distX) < abs(distY):
+        return distX
+    else:
+        return distY
+
