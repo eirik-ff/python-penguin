@@ -13,7 +13,7 @@ def lookAtEnemy(body):
     }
 
     you = body['you']
-    enemy = body['enemies']
+    enemy = body['enemies'][0]
 
     # my x and y coord
     x = you['x']
