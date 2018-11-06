@@ -23,6 +23,14 @@ def wallInFrontOfPenguin(body):
         xValueToCheckForWall += 1
     return doesCellContainWall(body["walls"], xValueToCheckForWall, yValueToCheckForWall)
 
+
+def enemyNearby(body):
+    try:
+        temp = body["enemies"][0]["x"]
+        return True
+    except:
+        return False
+
 def moveTowardsPoint(body, pointX, pointY):
     penguinPositionX = body["you"]["x"]
     penguinPositionY = body["you"]["y"]
@@ -38,11 +46,11 @@ def moveTowardsPoint(body, pointX, pointY):
     elif penguinPositionY > pointY:
         plannedAction = MOVE_UP[bodyDirection]
 
-    if enemyNearby():
+    if enemyNearby(body):
         if shootIfPossible(body):
             plannedAction = SHOOT
         else:
-            plannedAction = lookAtEnemy()
+            plannedAction = lookAtEnemy(body)
 
     elif plannedAction == ADVANCE and wallInFrontOfPenguin(body):
         plannedAction = SHOOT
