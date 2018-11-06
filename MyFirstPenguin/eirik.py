@@ -12,9 +12,11 @@ def lookAtEnemy(body):
     x = you['x']
     y = you['y']
     w_range = you['weaponRange']
+    action = PASS
 
     # enemy x and y coord
     ex = enemy['x']
     ey = enemy['y']
 
-    
+    if ex >= x:  # fiende til høyre for deg
+        pass
