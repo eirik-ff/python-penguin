@@ -68,7 +68,7 @@ def closestPowerup(body):
     y = you['y']
 
     m = 1000000
-    m_bonus = bonus[0]
+    m_bonus = bonus_list[0]
     for bonus in bonus_list:
         d = sqrt( (x - bonus['x'])**2 + (y - bonus['y'])**2 )
         if d < m:
