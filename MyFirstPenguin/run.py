@@ -25,8 +25,7 @@ if req_params_query == "info":
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
     returnObject["command"] = chooseAction(body)
-    print("stdout: NEW COMMAND!!!", file=sys.stdout)
-    print("stderr: NEW COMMAND!!!", file=sys.stderr)
+    print("stdout: NEW COMMAND!!!")
 
 response["body"] = returnObject
 responseBody.write(json.dumps(response))
