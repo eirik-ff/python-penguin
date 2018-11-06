@@ -10,6 +10,7 @@ from movement import *
 """
 tactics:
 * hvis en power up forsvinner vet vi hvor fienden er
+* Try og except er bedre enn if-setninger, burde alltid prioriteres
 """
 
 

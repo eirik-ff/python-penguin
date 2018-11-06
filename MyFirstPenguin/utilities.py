@@ -67,7 +67,10 @@ def chooseAction(body):
     #action = moveTowardsCenterOfMap(body)
     #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
     bx, by = closestPowerup(body)
-    action = moveTowardsPoint(body, bx, by)
+    if bx == -1:
+        action = moveTowardsCenterOfMap(body)
+    else:
+        action = moveTowardsPoint(body, bx, by)
     return action
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
