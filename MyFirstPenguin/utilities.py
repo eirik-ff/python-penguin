@@ -1,4 +1,5 @@
 from movement import *
+import math
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:

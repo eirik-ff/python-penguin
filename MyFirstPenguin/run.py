@@ -2,9 +2,10 @@ import os
 import json
 import random
 import math
-#from utilities import *
+from utilities import *
 from movement import *
 
+<<<<<<< HEAD
 def doesCellContainWall(walls, x, y):
     for wall in walls:
         if wall["x"] == x and wall["y"] == y:
@@ -70,6 +71,8 @@ def smallestDistanceToEnemy(body, myPosX, myPosY, enPosX, enPosY):
 
 
 
+=======
+>>>>>>> 4f0b3c6b14b10f26abf983fdf84ba45fddafcdc7
 env = os.environ
 req_params_query = env['REQ_PARAMS_QUERY']
 responseBody = open(env['res'], 'w')
