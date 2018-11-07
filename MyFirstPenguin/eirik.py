@@ -105,9 +105,9 @@ def lookAtEnemy(body):
 
     elif d_val == 3:
         if new_d_val == 0:
-            action = ROTATE_RIGHT
-        elif new_d_val == 2:
             action = ROTATE_LEFT
+        elif new_d_val == 2:
+            action = ROTATE_RIGHT
         elif new_d_val == 1:
             if ex > x:
                 action = ROTATE_RIGHT

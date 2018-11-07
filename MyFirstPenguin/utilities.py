@@ -95,14 +95,15 @@ def chooseAction(body):
 
 
     if enemyNearby(body):       #battle formation
+        state = readFromFile(STATE_FILENAME)
         if not winningTheBattle(body):                        #lavere enn fiendens
             print("Not winning battle")
-            #action=safeHeartHarvest(body)           #returner en action eller retreat hvis ingen hjerter mulig
-            state = readFromFile(STATE_FILENAME)
-            state["safeHeartHarvest"] = True
-            writeToFile(state, STATE_FILENAME)
-
-            action = RETREAT
+            #action=safeHeartHarvest(body)           
+            if state["safeHeartHarvest"]==False:
+                state["safeHeartHarvest"] = True
+                writeToFile(state, STATE_FILENAME)
+                return RETREAT
+            
         elif shootIfPossible(body):
             print("Shooting")
             action = SHOOT
