@@ -72,10 +72,12 @@ def chooseAction(body):
     #action = moveTowardsCenterOfMap(body)
     #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
     bx, by = closestPowerup(body)
-    if bx == -1:
+    hx, hy = findClosestHeart(body)
+    if bx == -1 or hx == -1:
         action = moveTowardsCenterOfMap(body)
     else:
-        action = moveTowardsPoint(body, bx, by)
+        #action = moveTowardsPoint(body, bx, by)
+        action = moveTowardsPoint(body, hx, hy)
     return action
 
 
