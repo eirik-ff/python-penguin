@@ -17,7 +17,7 @@ def shootIfPossible(body):
         return True
     elif direction == "left" and enX - myPosX < 0 and enY == myPosY:
         return True
-    elif direction == "down" and enY - myPosY > 0 and enX == myPosX:
+    elif direction == "bottom" and enY - myPosY > 0 and enX == myPosX:
         return True
     elif direction == "top" and enY - myPosY < 0 and enX == myPosX:
         return True
