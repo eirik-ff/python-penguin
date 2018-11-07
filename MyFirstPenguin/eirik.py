@@ -1,5 +1,5 @@
 from movement import *
-from math import sqrt, atan2, pi
+from utilities import distanceBetweenPoints
 
 def lookAtEnemy(body):
     """
@@ -110,7 +110,7 @@ def closestPowerup(body):
     m = 1000000
     m_bonus = bonus_list[0]
     for bonus in bonus_list:
-        d = sqrt( (x - bonus['x'])**2 + (y - bonus['y'])**2 )
+        d = distanceBetweenPoints(x, y, bonus['x'], bonus['y'])
         if d < m:
             m = d
             m_bonus = bonus

@@ -1,4 +1,5 @@
 from movement import *
+from utilities import distanceBetweenPoints
 
 def shootIfPossible(body):
     
@@ -24,3 +25,30 @@ def shootIfPossible(body):
     else:
         return False
 
+
+def lowerHealthThanEnemy(body):
+    you = body["you"]
+    enemy = body["enemies"][0]
+    myHealth = int(you["strength"])
+
+    return myHealth < int(enemy['strength'])
+
+
+def findClosestHeart(body):
+    hearts = [b for b in body["bonusTiles"] if body['bonusTiles']['type'] == 'strength']
+    if len(hearts) == 0:
+        return -1, -1
+
+    you = body['you']
+    x = you['x']
+    y = you['y']
+
+    m = 1000000
+    m_bonus = hearts[0]
+    for heart in hearts:
+        d = distanceBetweenPoints(x, y, heart['x'], heart['y'])
+        if d < m:
+            m = d
+            m_bonus = bonus
+
+    return m_bonus['x'], m_bonus['y']
