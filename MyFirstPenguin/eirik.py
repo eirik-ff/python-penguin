@@ -141,7 +141,7 @@ def enemyFacingYou(body):
         return True
     elif ed == "left" and x < ex:  # vi er til venstre, fiende ser mot venstre
         return True
-    elif ed == "right" and x > ex:  # vi er til høyre, fiende ser mot høyre
+    elif ed == "right" and x > ex:  # vi er til hoyre, fiende ser mot hoyre
         return True
 
     return False
