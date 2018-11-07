@@ -35,6 +35,7 @@ def enemyNearby(body):
         writeToFile(body, STATE_FILE)
         return True
     except:
+        print("enemyNearby failed....")
         return False
 
 
