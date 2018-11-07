@@ -35,7 +35,7 @@ def lowerHealthThanEnemy(body):
 
 
 def findClosestHeart(body):
-    hearts = [b for b in body["bonusTiles"] if body['bonusTiles']['type'] == 'strength']
+    hearts = [b for b in body["bonusTiles"] if b['type'] == 'strength']
     if len(hearts) == 0:
         return -1, -1
 
