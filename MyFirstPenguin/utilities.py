@@ -38,7 +38,6 @@ def enemyNearby(body):
         writeToFile(body, STATE_FILE)
     except:
         print("enemyNearby failed....")
-        retval = False
 
     return retval
 
