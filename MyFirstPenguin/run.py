@@ -6,7 +6,6 @@ import math
 import sys
 from utilities import *
 from movement import *
-from pprint import pprint
 
 """
 tactics:
@@ -32,7 +31,7 @@ elif req_params_query == "command":
     print("------------------ END RESPONSE ------------------")
 
 response["body"] = returnObject
-pprint(response)
+response["weaponDamage"] = 100
 responseBody.write(json.dumps(response))
 responseBody.close()
 
