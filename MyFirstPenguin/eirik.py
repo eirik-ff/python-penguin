@@ -125,7 +125,7 @@ def closestPowerup(body):
     """
     gives x, y for closest powerup
     """
-    bonus_list = body["bonusTiles"]
+    bonus_list = [b for b in body["bonusTiles"] if b['type'] == "weapon-power"]
     if len(bonus_list) == 0:
         return -1, -1
 

@@ -79,8 +79,15 @@ flytt combatmode ned i choose action
 def chooseAction(body):
     state = readFromFile(STATE_FILENAME)
     action = PASS
-    #action = moveTowardsCenterOfMap(body)
-    #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    
+    #try:
+    #   action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
+    #   if shootIfPossible(body):
+    #       action = SHOOT
+    #except:
+    #   action = moveTowardsCenterOfMap(body)
+    #   if shootIfPossible(body):
+    #       action = SHOOT
     bx, by = closestPowerup(body)
     hx, hy = findClosestHeart(body)
 
@@ -106,24 +113,24 @@ def chooseAction(body):
  
 
     if enemyNearby(body):       #battle formation                        
-        if not winningTheBattle(body):                        #lavere enn fiendens
-            print("Not winning battle")          
-            state["safeHeartHarvest"] = True
-            writeToFile(state, STATE_FILENAME)
+        # if not winningTheBattle(body):                        #lavere enn fiendens
+        #     print("Not winning battle")          
+        #     state["safeHeartHarvest"] = True
+        #     writeToFile(state, STATE_FILENAME)
             
-            #sx, sy = safeHeartHarvest(body)
-            #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
-            return RETREAT
+        #     #sx, sy = safeHeartHarvest(body)
+        #     #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
+        #     return RETREAT
 
 
-        elif shootIfPossible(body):
+        if shootIfPossible(body):
             print("Shooting")
             action = SHOOT
         else:
             print("Looking at enemy")
             action = lookAtEnemy(body)
 
-    # elif enemyNearby(prev_body) and state["safeHeartHarvest"]==False:
+    # elif enemyNearby(prev_body):  # and state["safeHeartHarvest"]==False:
     #     hunt_x, hunt_y = huntingPoint(prev_body)
     #     print("Enemy nearby prev body")
     #     radius = 2
