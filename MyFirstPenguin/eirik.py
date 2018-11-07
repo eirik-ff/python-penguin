@@ -181,11 +181,11 @@ def winningTheBattle(body):
 
 def readFromFile(filename):
     try:
-        f = open(filename, "r")
-        state = json.load(f)
+        state = {}
+        with open(filename, "r") as f:
+            state = json.load(f)
         print("Read from file: ")
         print(state)
-        f.close()
     except IOError as ioerr:
         print("File not found", ioerr)
         state = {}
