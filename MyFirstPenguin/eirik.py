@@ -121,3 +121,34 @@ def closestPowerup(body):
 
     print("Closest powerup:", m_bonus['type'], "@", m_bonus['x'], m_bonus['y'], "dist=", m)
     return m_bonus['x'], m_bonus['y']
+
+
+def enemyFacingYou(body):
+    you = body['you']
+    enemy = body['enemies'][0]
+
+    x = you['x']
+    y = you['y']
+
+    ex = enemy['x']
+    ey = enemy['y']
+    ed = enemy['direction']
+
+    if ed == "top" and y < ey:  # vi er over, fiende ser opp
+        return True
+    elif ed == "bottom" and y > ey:  # vi er under, fiende ser ned
+        return True
+    elif ed == "left" and x < ex:  # vi er til venstre, fiende ser mot venstre
+        return True
+    elif ed == "right" and x > ex:  # vi er til høyre, fiende ser mot høyre
+        return True
+
+    return False
+
+
+
+
+def winningTheBattle(body):
+    you = body['you']
+    enemy = body['enemies'][0]
+
