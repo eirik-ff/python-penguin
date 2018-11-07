@@ -3,6 +3,7 @@ from movement import *
 import math
 from eirik import *
 from martin import *
+import sys
 
 
 def doesCellContainWall(walls, x, y):
@@ -34,8 +35,13 @@ def enemyNearby(body):
         temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
         print("Enemy nearby")
         retval = True
+
+        writeToFile(body, STATE_FILENAME)
+    except KeyError:
+        return False
     except:
-        print("enemyNearby failed....")
+        print("enemyNearby failed...")
+        print(sys.exc_info())
 
     return retval
 
@@ -89,7 +95,6 @@ def chooseAction(body):
 
 
     if enemyNearby(body):       #battle formation
-        writeToFile(body, STATE_FILE)
         if not winningTheBattle(body):                        #lavere enn fiendens
             print("Not winning battle")
             #action=safeHeartHarvest(body)           #returner en action eller retreat hvis ingen hjerter mulig
