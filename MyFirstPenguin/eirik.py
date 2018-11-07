@@ -180,6 +180,7 @@ def winningTheBattle(body):
 
 
 def readFromFile(filename):
+    print("Reading form file....", filename)
     try:
         state = {}
         with open(filename, "r") as f:
@@ -208,7 +209,7 @@ def writeToFile(state, filename):
         print("Wrote to file: ", filename)
         return True
     except:
-        print("Error writing")
+        print("Error writing: ", filename)
         print(sys.exc_info())
         return False
 
