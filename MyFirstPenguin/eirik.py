@@ -34,7 +34,7 @@ def lookAtEnemy(body):
     if theta > pi: theta -= pi
     print("x y ex ey theta: ", x, y, ex, ey, theta)
     n_theta = theta // (pi/2)
-    print("n-theta": n_theta)
+    print("n-theta", n_theta)
 
     # if -pi / 4 <= theta <= pi / 4:
     #     new_d = "left"
