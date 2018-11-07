@@ -191,7 +191,7 @@ def readFromFile(filename):
         print("File not found", ioerr)
         state = {}
     except:
-        print("Couldn't open file or something???")
+        print("Something went wrong reading file...")
         print(sys.exc_info())
         state = {}
 
@@ -204,7 +204,7 @@ def writeToFile(state, filename):
     """
     try:
         f = open(filename, "w")
-        f.write(json.dump(state))
+        f.write(json.dumps(state))
         f.close()
 
         print("Wrote to file")
