@@ -117,5 +117,5 @@ def closestPowerup(body):
             m = d
             m_bonus = bonus
 
-    print("Closest powerup:", m_bonus['type'], m_bonus['x'], m_bonus['y'])
+    print("Closest powerup:", m_bonus['type'], "@", m_bonus['x'], m_bonus['y'], "dist=", m)
     return m_bonus['x'], m_bonus['y']
