@@ -127,6 +127,8 @@ def closestPowerup(body):
     """
     bonus_list = [b for b in body["bonusTiles"] if b['type'] == "weapon-power"]
     if len(bonus_list) == 0:
+        bonus_list = body["bonusTiles"]
+    if len(bonus_list) == 0:
         return -1, -1
 
     you = body['you']
