@@ -183,6 +183,8 @@ def readFromFile(filename):
     try:
         f = open(filename, "r")
         state = f.read()
+        print("Read from file: ")
+        print(state)
         state = json.loads(state)
         f.close()
     except IOError as ioerr:
