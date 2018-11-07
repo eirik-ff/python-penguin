@@ -25,7 +25,7 @@ def shootIfPossible(body):
         print("Shooting")
         return True
     elif direction == "top" and enY - myPosY < 0 and enX == myPosX:
-        print("Shooting")g
+        print("Shooting")
         return True
     else:
         return False
