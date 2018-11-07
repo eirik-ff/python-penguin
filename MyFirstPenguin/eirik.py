@@ -4,7 +4,7 @@ from martin import *
 from math import sqrt
 import json
 import sys
-from utilities import *
+import utilities
 
 
 BODY_FILENAME = "body.json"
@@ -258,5 +258,5 @@ def huntEnemy(body):
             new_y = max_y - 1      
 
     print("Hunting towards", new_x, new_y)
-    action = moveTowardsPoint(body, new_x, new_y)
+    action = utilities.moveTowardsPoint(body, new_x, new_y)
     return action
