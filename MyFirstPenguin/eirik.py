@@ -19,7 +19,6 @@ def lookAtEnemy(body):
     x = you['x']
     y = you['y']
     d = you['direction']
-    w_range = you['weaponRange']
     new_d = "right"
     action = PASS
 
@@ -29,36 +28,69 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    theta = atan2(dx, -dy) + pi/2
-    if (theta > pi): theta -= pi
-    print("x y ex ey theta: ", x, y, ex, ey, theta)
+    print("x y ex ey", x, y, ex, ey)
 
-    if -pi / 4 <= theta <= pi / 4:
-        new_d = "left"
-        print("new dir left")
-    elif pi / 4 <= theta <= 3 * pi / 4:
-        new_d = "bottom"
-        print("new dir bottom")
-    elif -3 * pi / 4 <= theta <= -pi / 4:
-        new_d = "top"
-        print("new dir top")
-    else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
-        new_d = "right"
-        print("new dir right")
+    if ey < y:  # enemy above
+        if abs(dx) > abs(dy):
+            if dx > 0:
+                new_d = "right"
+            elif dx < 0:
+                new_d = "left"
+        elif abs(dy) >= abs(dx):
+            new_d = "top"
+
+    elif ey > y:  # enemy below
+        if abs(dx) > abs(dy):
+            if dx > 0:
+                new_d = "right"
+            elif dx < 0:
+                new_d = "left"
+        elif abs(dy) >= abs(dx):
+            new_d = "bottom"
+
+    else:  # enemy same height
+        if ex < x:
+            new_d = "left"
+        elif ex > x:
+            new_d = "right"
+
+    print("new dir", new_d)
 
 
     d_val = DIR_VALUE[d]
     new_d_val = DIR_VALUE[new_d]
 
-    dist = new_d_val - d_val
-    if d_val == 0 and new_d == 3:
-        action = ROTATE_RIGHT
-    elif d_val == 3 and new_d == 0:
-        action = ROTATE_LEFT
-    elif dist > 0:
-        action = ROTATE_LEFT
-    elif dist < 0:
-        action = ROTATE_RIGHT
+
+    if d_val == 0:
+        if new_d_val == 1:
+            action = ROTATE_LEFT
+        elif new_d_val == 3:
+            action = ROTATE_RIGHT
+
+    elif d_val == 1:
+        if new_d_val == 0:
+            action = ROTATE_RIGHT
+        elif new_d_val == 2:
+            action = ROTATE_LEFT
+
+    elif d_val == 2:
+        if new_d_val == 1:
+            action = ROTATE_RIGHT
+        elif new_d_val == 3:
+            action = ROTATE_LEFT
+
+    elif d_val == 3:
+        if new_d_val == 0:
+            action = ROTATE_RIGHT
+        elif new_d_val == 2:
+            action = ROTATE_LEFT
+
+    else:
+        dist = new_d_val - d_val
+        if dist > 0:
+            action = ROTATE_LEFT
+        elif dist < 0:
+            action = ROTATE_RIGHT
 
     return action
 
