@@ -77,11 +77,18 @@ def moveTowardsCenterOfMap(body):
 flytt combatmode ned i choose action
 """
 def chooseAction(body):
+    
+    
     action = PASS
     #action = moveTowardsCenterOfMap(body)
     #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
     bx, by = closestPowerup(body)
     hx, hy = findClosestHeart(body)
+
+    if not lowerHealthThanEnemy(body):
+        state = readFromFile(STATE_FILENAME)
+        state["safeHeartHarvest"] = False
+        writeToFile(state, STATE_FILENAME)
 
     if bx == -1:
         action = moveTowardsCenterOfMap(body)
@@ -119,8 +126,12 @@ def chooseAction(body):
             print("Looking at enemy")
             action = lookAtEnemy(body)
     elif enemyNearby(prev_body):
+        hunt_x, hunt_y = huntingPoint(prev_body)
         print("Enemy nearby prev body")
-        action = huntEnemy(body)
+        radius = 2
+        if not(hunt_x - radius <= body['you']['x'] <= hunt_x + radius and \
+                hunt_y - radius <= body['you']['y'] <= hunt_y + radius):
+            action = huntEnemy(body)
     
     return action
 
@@ -147,7 +158,10 @@ def safeHeartHarvest(body):
 def safePlace(body):
     goodX = [] 
     goodY = []
-    #returnerer liste med lovlige x og y posisjoner (se 2. linje i safeHeartHarvest)        
+    #returnerer liste med lovlige x og y posisjoner (se 2. linje i safeHeartHarvest)  
+    
+    for i in range() 
+          
     return goodX, goodY
 
 

@@ -211,13 +211,8 @@ def writeToFile(state, filename):
         return False
 
 
-
-def huntEnemy(body):
-    """
-    guess that enemy is moving three blocks in direction from last seen position
-    """
+def huntingPoint(body):
     GUESS = 3
-    action = PASS
 
     max_x = body['mapWidth']
     max_y = body['mapHeight']    
@@ -241,9 +236,9 @@ def huntEnemy(body):
     elif ed == "top":
         new_x = ex
         new_y = ey - GUESS
-
+    
         if new_y < 0:
-            new_y = 0
+            new_y = 0                                                            
     elif ed == "left":
         new_x = ex - GUESS
         new_y = ey
@@ -255,7 +250,17 @@ def huntEnemy(body):
         new_y = ey + GUESS  
 
         if new_y >= max_y:
-            new_y = max_y - 1      
+            new_y = max_y - 1     
+
+    return new_x, new_y 
+
+
+def huntEnemy(body):
+    """
+    guess that enemy is moving three blocks in direction from last seen position
+    """
+    action = PASS
+    new_x, new_y = huntingPoint(body)
 
     print("Hunting towards", new_x, new_y)
     action = utilities.moveTowardsPoint(body, new_x, new_y)
