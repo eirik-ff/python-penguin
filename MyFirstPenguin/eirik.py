@@ -33,8 +33,6 @@ def lookAtEnemy(body):
     if theta < pi: theta += pi
     if theta > pi: theta -= pi
     print("x y ex ey theta: ", x, y, ex, ey, theta)
-    n_theta = theta // (pi/2)
-    print("n-theta", n_theta)
 
     # if -pi / 4 <= theta <= pi / 4:
     #     new_d = "left"
@@ -50,14 +48,30 @@ def lookAtEnemy(body):
     #     print("new dir right")
 
     if ey < y:  # enemy above
-        new_d = "top"
+        if abs(dx) > abs(dy):
+            if dx > 0:
+                new_d = "right"
+            elif dx < 0:
+                new_d = "left"
+        elif abs(dy) > abs(dx):
+            new_d = "top"
+
     elif ey > y:  # enemy below
-        new_d = "bottom"
+        if abs(dx) > abs(dy):
+            if dx > 0:
+                new_d = "right"
+            elif dx < 0:
+                new_d = "left"
+        elif abs(dy) > abs(dx):
+            new_d = "bottom"
+
     else:  # enemy same height
         if ex < x:
             new_d = "left"
         elif ex > x:
             new_d = "right"
+
+    print("new dir", new_d)
 
 
     d_val = DIR_VALUE[d]
