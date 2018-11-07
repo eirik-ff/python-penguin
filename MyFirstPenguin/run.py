@@ -31,6 +31,10 @@ elif req_params_query == "command":
     returnObject["command"] = chooseAction(body)
     print("------------------ END RESPONSE ------------------")
 
+
+with open("testfile.txt", "a") as f:
+    f.write("Hello!\n")
+
 response["body"] = returnObject
 responseBody.write(json.dumps(response))
 responseBody.close()
