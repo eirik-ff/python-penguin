@@ -44,11 +44,11 @@ def findClosestHeart(body):
     y = you['y']
 
     m = 1000000
-    m_bonus = hearts[0]
+    m_heart = hearts[0]
     for heart in hearts:
-        d = distanceBetweenPoints(x, y, heart['x'], heart['y'])
+        d = ((x - heart['x'])**2 + (y - heart['y'])**2)**(1/2)
         if d < m:
             m = d
-            m_bonus = bonus
+            m_heart = heart
 
-    return m_bonus['x'], m_bonus['y']
+    return m_heart['x'], m_heart['y']

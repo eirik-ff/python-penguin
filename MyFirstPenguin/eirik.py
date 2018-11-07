@@ -110,7 +110,7 @@ def closestPowerup(body):
     m = 1000000
     m_bonus = bonus_list[0]
     for bonus in bonus_list:
-        d = distanceBetweenPoints(x, y, bonus['x'], bonus['y'])
+        d = ((x - bonus['x'])**2 + (y - bonus['y'])**2)**(1/2)
         if d < m:
             m = d
             m_bonus = bonus
