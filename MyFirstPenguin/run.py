@@ -28,7 +28,7 @@ if req_params_query == "info":
     returnObject["team"] = "Penguin Team Six"
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
-    print("------------------ NEW RESPONSE ------------------")
+    print("\n\n------------------ NEW RESPONSE ------------------")
     print("Visibility: ", body['visibility'])
     returnObject["command"] = chooseAction(body)
     print("------------------ END RESPONSE ------------------")
