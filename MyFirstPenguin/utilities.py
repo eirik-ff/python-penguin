@@ -96,8 +96,10 @@ def chooseAction(body):
 
             action = RETREAT
         elif shootIfPossible(body):
+            print("Shooting")
             action = SHOOT
         else:
+            print("Looking at enemy")
             action = lookAtEnemy(body)
     
     return action
