@@ -84,7 +84,7 @@ def chooseAction(body):
     bx, by = closestPowerup(body)
     hx, hy = findClosestHeart(body)
 
-    if not lowerHealthThanEnemy(body):
+    if not lowerHealthThanEnemy(body, threshold=59):
         state = readFromFile(STATE_FILENAME)
         state["safeHeartHarvest"] = False
         writeToFile(state, STATE_FILENAME)
@@ -96,10 +96,6 @@ def chooseAction(body):
         print("Moving towards closest powerup @ ", bx, by)
         action = moveTowardsPoint(body, bx, by)
 
-        if lowerHealthThanEnemy(body) and hx != -1:
-            action = moveTowardsPoint(body, hx, hy)
-            print("Moving towards nearest heart @ ", hx, hy)
-
     prev_body = readFromFile(BODY_FILENAME)
     state = readFromFile(STATE_FILENAME)
     if len(state) == 0:  # emptyd dict
@@ -107,7 +103,7 @@ def chooseAction(body):
 
     if state["safeHeartHarvest"] == True:
         action = moveTowardsPoint(body, hx, hy)
-
+ 
 
     if enemyNearby(body):       #battle formation                        
         if not winningTheBattle(body):                        #lavere enn fiendens
@@ -117,8 +113,8 @@ def chooseAction(body):
             
             #sx, sy = safeHeartHarvest(body)
             #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
-            
-        
+            return RETREAT
+
 
         elif shootIfPossible(body):
             print("Shooting")
@@ -127,13 +123,13 @@ def chooseAction(body):
             print("Looking at enemy")
             action = lookAtEnemy(body)
 
-    elif enemyNearby(prev_body) and state["safeHeartHarvest"]==False:
-        hunt_x, hunt_y = huntingPoint(prev_body)
-        print("Enemy nearby prev body")
-        radius = 2
-        if not(hunt_x - radius <= body['you']['x'] <= hunt_x + radius and \
-                hunt_y - radius <= body['you']['y'] <= hunt_y + radius):
-            action = huntEnemy(body)
+    # elif enemyNearby(prev_body) and state["safeHeartHarvest"]==False:
+    #     hunt_x, hunt_y = huntingPoint(prev_body)
+    #     print("Enemy nearby prev body")
+    #     radius = 2
+    #     if not(hunt_x - radius <= body['you']['x'] <= hunt_x + radius and \
+    #             hunt_y - radius <= body['you']['y'] <= hunt_y + radius):
+    #         action = huntEnemy(body)
     
     return action
 

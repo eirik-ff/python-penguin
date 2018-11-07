@@ -33,12 +33,12 @@ def shootIfPossible(body):
         return False
 
 
-def lowerHealthThanEnemy(body):
+def lowerHealthThanEnemy(body, threshold=0):
     you = body["you"]
     enemy = body["enemies"][0]
     myHealth = int(you["strength"])
 
-    return myHealth < int(enemy['strength'])
+    return myHealth < int(enemy['strength']) - threshold
 
 
 def findClosestHeart(body):

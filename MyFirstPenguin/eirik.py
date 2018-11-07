@@ -172,7 +172,7 @@ def winningTheBattle(body):
     weaponDamage = body['you']['weaponDamage']
     eWeaponDamage = body['enemies'][0]['weaponDamage']
 
-    if enemyFacingYou(body) and lowerHealthThanEnemy(body) and \
+    if enemyFacingYou(body) and lowerHealthThanEnemy(body, threshold=59) and \
         weaponDamage <= eWeaponDamage:
         return False
     print("winningBattle() is running")
