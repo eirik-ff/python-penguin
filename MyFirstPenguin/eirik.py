@@ -1,10 +1,10 @@
 from __future__ import print_function
 from movement import *
-from utilities import *
 from martin import *
 from math import sqrt
 import json
 import sys
+from utilities import *
 
 
 BODY_FILENAME = "body.json"
@@ -210,27 +210,6 @@ def writeToFile(state, filename):
         print(sys.exc_info())
         return False
 
-
-
-def moveTowardsPoint(body, pointX, pointY):
-    penguinPositionX = body["you"]["x"]
-    penguinPositionY = body["you"]["y"]
-    plannedAction = PASS
-    bodyDirection = body["you"]["direction"]
-
-    if penguinPositionX < pointX:
-        plannedAction = MOVE_RIGHT[bodyDirection]
-    elif penguinPositionX > pointX:
-        plannedAction = MOVE_LEFT[bodyDirection]
-    elif penguinPositionY < pointY:
-        plannedAction = MOVE_DOWN[bodyDirection]
-    elif penguinPositionY > pointY:
-        plannedAction = MOVE_UP[bodyDirection]
-
-    if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
-        plannedAction = SHOOT
-
-    return plannedAction
 
 
 def huntEnemy(body):
