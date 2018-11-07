@@ -8,7 +8,6 @@ from utilities import *
 from movement import *
 from pprint import pprint
 
-
 """
 tactics:
 * hvis en power up forsvinner vet vi hvor fienden er
@@ -30,10 +29,10 @@ elif req_params_query == "command":
     print("------------------ NEW RESPONSE ------------------")
     print("Visibility: ", body['visibility'])
     returnObject["command"] = chooseAction(body)
-    pprint(returnObject)
     print("------------------ END RESPONSE ------------------")
 
 response["body"] = returnObject
+pprint(response)
 responseBody.write(json.dumps(response))
 responseBody.close()
 
