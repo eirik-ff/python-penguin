@@ -184,8 +184,8 @@ def readFromFile(filename):
         state = f.read()
         state = json.read(state)
         f.close()
-    except FileNotFoundError:
-        print("File not found")
+    except IOError as ioerr:
+        print("File not found", ioerr)
         state = {}
     except:
         print("Couldn't open file or something???")
