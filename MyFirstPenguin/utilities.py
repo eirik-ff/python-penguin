@@ -29,14 +29,18 @@ def wallInFrontOfPenguin(body):
 
 
 def enemyNearby(body):
+    retval = False
     try:
         temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
         print("Enemy nearby")
+        retval = True
+
         writeToFile(body, STATE_FILE)
-        return True
     except:
         print("enemyNearby failed....")
-        return False
+        retval = False
+
+    return retval
 
 
 def moveTowardsPoint(body, pointX, pointY):
