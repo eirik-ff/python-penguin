@@ -76,8 +76,10 @@ def chooseAction(body):
     if bx == -1 or hx == -1:
         action = moveTowardsCenterOfMap(body)
     else:
-        #action = moveTowardsPoint(body, bx, by)
-        action = moveTowardsPoint(body, hx, hy)
+        action = moveTowardsPoint(body, bx, by)
+        
+        if lowerHealthThanEnemy(body):
+            action = moveTowardsPoint(body, hx, hy)
     return action
 
 
