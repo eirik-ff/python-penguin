@@ -37,11 +37,11 @@ def lookAtEnemy(body):
         new_d = "left"
         print("new dir left")
     elif pi / 4 <= theta <= 3 * pi / 4:
-        new_d = "top"
-        print("new dir top")
-    elif -3 * pi / 4 <= theta <= -pi / 4:
         new_d = "bottom"
         print("new dir bottom")
+    elif -3 * pi / 4 <= theta <= -pi / 4:
+        new_d = "top"
+        print("new dir top")
     else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
         new_d = "right"
         print("new dir right")
