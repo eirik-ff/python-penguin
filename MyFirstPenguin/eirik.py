@@ -184,7 +184,7 @@ def readFromFile(filename):
         state = {}
         with open(filename, "r") as f:
             state = json.load(f)
-        print("Read from file: ")
+        print("Read from file: ", filename)
         print(state)
     except IOError as ioerr:
         print("File not found", ioerr)
@@ -202,11 +202,10 @@ def writeToFile(state, filename):
     state must be dict
     """
     try:
-        f = open(filename, "w")
-        f.write(json.dumps(state))
-        f.close()
+        with open(filename, "w") as f:
+            f.write(json.dumps(state))
 
-        print("Wrote to file")
+        print("Wrote to file: ", filename)
         return True
     except:
         print("Error writing")

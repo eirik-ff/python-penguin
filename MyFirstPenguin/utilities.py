@@ -102,7 +102,7 @@ def chooseAction(body):
 
     if enemyNearby(body):       #battle formation
         state = readFromFile(STATE_FILENAME)
-        if len(state) == 0:  # empty dict
+        if len(state) == 0:  # emptyd dict
             state["safeHeartHarvest"] = False
                         
         if not winningTheBattle(body):                        #lavere enn fiendens
