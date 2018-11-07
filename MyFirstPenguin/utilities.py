@@ -102,7 +102,6 @@ def chooseAction(body):
             print("Moving towards nearest heart @ ", hx, hy)
 
     prev_body = readFromFile(BODY_FILENAME)
-    pprint(prev_body)
 
     if enemyNearby(body):       #battle formation
         state = readFromFile(STATE_FILENAME)
@@ -114,7 +113,7 @@ def chooseAction(body):
             state["safeHeartHarvest"] = True
             writeToFile(state, STATE_FILENAME)
             
-            sx, sy = safeHeartHarvest(body)
+            #sx, sy = safeHeartHarvest(body)
             #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
             
         #if state["safeHeartHarvest"] == False: pass
@@ -160,7 +159,7 @@ def safePlace(body):
     goodY = []
     #returnerer liste med lovlige x og y posisjoner (se 2. linje i safeHeartHarvest)  
     
-    for i in range() 
+    for i in range(): pass
           
     return goodX, goodY
 
