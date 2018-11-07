@@ -2,7 +2,7 @@ from movement import *
 import math
 from eirik import *
 from martin import *
-
+from __future__ import print_function
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:
