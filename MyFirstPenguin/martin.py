@@ -1,5 +1,6 @@
 from movement import *
 from utilities import *
+from math import sqrt
 
 def shootIfPossible(body):
     
@@ -46,7 +47,7 @@ def findClosestHeart(body):
     m = 1000000
     m_heart = hearts[0]
     for heart in hearts:
-        d = ((x - heart['x'])**2 + (y - heart['y'])**2)**(1/2)
+        d = sqrt((x - heart['x'])**2 + (y - heart['y'])**2)
         if d < m:
             m = d
             m_heart = heart
