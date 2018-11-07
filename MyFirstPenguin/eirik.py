@@ -1,6 +1,7 @@
 from __future__ import print_function
 from movement import *
 from utilities import *
+from martin import *
 from math import sqrt
 
 
@@ -149,6 +150,11 @@ def enemyFacingYou(body):
 
 
 def winningTheBattle(body):
-    you = body['you']
-    enemy = body['enemies'][0]
+    weaponDamage = body['you']['weaponDamage']
+    eWeaponDamage = body['enemies'][0]['weaponDamage']
 
+    if enemyFacingYou(body) and lowerHealthThanEnemy(body) and \
+        weaponDamage <= eWeaponDamage:
+        return False
+    
+    return True
