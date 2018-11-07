@@ -185,6 +185,7 @@ def readFromFile(filename):
         state = json.read(state)
         f.close()
     except:
+        print("Couldn't open file or something???")
         state = {}
 
     return state
