@@ -3,11 +3,6 @@ import math
 from eirik import *
 from martin import *
 
-def print(*args):
-    """
-    fordi serveren kjører python2 og den har ikke en fin print-funksjon
-    """
-    print(" ".join(args))
 
 def doesCellContainWall(walls, x, y):
     for wall in walls:
