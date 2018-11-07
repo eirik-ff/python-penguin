@@ -80,8 +80,8 @@ def chooseAction(body):
         action = moveTowardsCenterOfMap(body)
         print("Moving to center of map")
     else:
-        action = moveTowardsPoint(body, bx, by)
         print("Moving towards closest powerup @ ", bx, by)
+        action = moveTowardsPoint(body, bx, by)
 
         if lowerHealthThanEnemy(body) and hx != -1:
             action = moveTowardsPoint(body, hx, hy)
