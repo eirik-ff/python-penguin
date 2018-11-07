@@ -110,9 +110,9 @@ def lookAtEnemy(body):
             action = ROTATE_LEFT
         elif new_d_val == 1:
             if ex > x:
-                action = ROTATE_LEFT
-            elif ex < x:
                 action = ROTATE_RIGHT
+            elif ex < x:
+                action = ROTATE_LEFT
     else:
         print("Looking at enemy: else????????")
 
