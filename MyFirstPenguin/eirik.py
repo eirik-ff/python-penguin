@@ -29,7 +29,7 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    theta = atan2(dx, -dy) + pi
+    theta = atan2(dx, -dy)
     n_theta = theta // (pi/2)
     print("n_theta", n_theta)
     print("x y ex ey theta: ", x, y, ex, ey, theta)
