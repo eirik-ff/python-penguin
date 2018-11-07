@@ -112,7 +112,7 @@ def chooseAction(body):
             print("Not winning battle")          
             state["safeHeartHarvest"] = True
             writeToFile(state, STATE_FILENAME)
-            
+            return retreat
             #sx, sy = safeHeartHarvest(body)
             #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
             
