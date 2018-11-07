@@ -31,7 +31,6 @@ elif req_params_query == "command":
     print("------------------ END RESPONSE ------------------")
 
 response["body"] = returnObject
-response["weaponDamage"] = 100
 responseBody.write(json.dumps(response))
 responseBody.close()
 
