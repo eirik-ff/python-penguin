@@ -29,22 +29,35 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    theta = atan2(dx, -dy) + pi/2
-    if (theta > pi): theta -= pi
+    theta = atan2(dx, -dy) - pi/4
+    if theta < pi: theta += pi
+    if theta > pi: theta -= pi
     print("x y ex ey theta: ", x, y, ex, ey, theta)
+    n_theta = theta // (pi/2)
+    print("n-theta": n_theta)
 
-    if -pi / 4 <= theta <= pi / 4:
-        new_d = "left"
-        print("new dir left")
-    elif pi / 4 <= theta <= 3 * pi / 4:
-        new_d = "bottom"
-        print("new dir bottom")
-    elif -3 * pi / 4 <= theta <= -pi / 4:
+    # if -pi / 4 <= theta <= pi / 4:
+    #     new_d = "left"
+    #     print("new dir left")
+    # elif pi / 4 <= theta <= 3 * pi / 4:
+    #     new_d = "bottom"
+    #     print("new dir bottom")
+    # elif -3 * pi / 4 <= theta <= -pi / 4:
+    #     new_d = "top"
+    #     print("new dir top")
+    # else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
+    #     new_d = "right"
+    #     print("new dir right")
+
+    if ey < y:  # enemy above
         new_d = "top"
-        print("new dir top")
-    else:  # pi / 4 <= theta <= pi or -pi <= theta <= -3 * pi / 4:
-        new_d = "right"
-        print("new dir right")
+    elif ey > y:  # enemy below
+        new_d = "bottom"
+    else:  # enemy same height
+        if ex < x:
+            new_d = "left"
+        elif ex > x:
+            new_d = "right"
 
 
     d_val = DIR_VALUE[d]
