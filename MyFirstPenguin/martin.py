@@ -1,7 +1,8 @@
+from __future__ import print_function
 from movement import *
 from utilities import *
 from math import sqrt
-from __future__ import print_function
+
 
 def shootIfPossible(body):
     
