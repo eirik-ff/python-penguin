@@ -93,6 +93,7 @@ def lookAtEnemy(body):
         elif dist < 0:
             action = ROTATE_RIGHT
 
+    print("Looking at enemy")
     return action
 
 

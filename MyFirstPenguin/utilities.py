@@ -6,6 +6,7 @@ from martin import *
 def doesCellContainWall(walls, x, y):
     for wall in walls:
         if wall["x"] == x and wall["y"] == y:
+            print("Enemy nearby")
             return True
     return False
 
@@ -50,7 +51,6 @@ def moveTowardsPoint(body, pointX, pointY):
         plannedAction = MOVE_UP[bodyDirection]
 
     if enemyNearby(body):       #battle formation
-        print("Enemy nearby")
         if shootIfPossible(body):
             plannedAction = SHOOT
         else:
@@ -78,12 +78,14 @@ def chooseAction(body):
     hx, hy = findClosestHeart(body)
     if bx == -1:
         action = moveTowardsCenterOfMap(body)
+        print("Moving to center of map")
     else:
         action = moveTowardsPoint(body, bx, by)
+        print("Moving towards closest powerup @ ", bx, by)
 
         if lowerHealthThanEnemy(body):
             action = moveTowardsPoint(body, hx, hy)
-            print("Moving towards nearest heart")
+            print("Moving towards nearest heart @ ", hx, hy)
             
     return action
 

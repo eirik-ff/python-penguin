@@ -16,12 +16,16 @@ def shootIfPossible(body):
         return False
 
     if direction == "right" and enX - myPosX > 0 and enY == myPosY:
+        print("Shooting")
         return True
     elif direction == "left" and enX - myPosX < 0 and enY == myPosY:
+        print("Shooting")
         return True
     elif direction == "bottom" and enY - myPosY > 0 and enX == myPosX:
+        print("Shooting")
         return True
     elif direction == "top" and enY - myPosY < 0 and enX == myPosX:
+        print("Shooting")g
         return True
     else:
         return False
