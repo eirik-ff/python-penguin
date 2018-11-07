@@ -1,5 +1,5 @@
 from movement import *
-from utilities import distanceBetweenPoints
+from utilities import *
 
 def lookAtEnemy(body):
     """
