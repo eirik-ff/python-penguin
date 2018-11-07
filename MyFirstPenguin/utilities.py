@@ -141,8 +141,9 @@ def safeHeartHarvest(body):
     return m_heart["x"], m_heart["y"]
 
 def safePlace(body):
-    goodX = [] goodY = []
-    
+    goodX = [] 
+    goodY = []
+        
     return goodX, goodY
 
 
