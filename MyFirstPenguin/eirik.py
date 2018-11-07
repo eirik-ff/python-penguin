@@ -211,6 +211,28 @@ def writeToFile(state, filename):
         return False
 
 
+
+def moveTowardsPoint(body, pointX, pointY):
+    penguinPositionX = body["you"]["x"]
+    penguinPositionY = body["you"]["y"]
+    plannedAction = PASS
+    bodyDirection = body["you"]["direction"]
+
+    if penguinPositionX < pointX:
+        plannedAction = MOVE_RIGHT[bodyDirection]
+    elif penguinPositionX > pointX:
+        plannedAction = MOVE_LEFT[bodyDirection]
+    elif penguinPositionY < pointY:
+        plannedAction = MOVE_DOWN[bodyDirection]
+    elif penguinPositionY > pointY:
+        plannedAction = MOVE_UP[bodyDirection]
+
+    if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
+        plannedAction = SHOOT
+
+    return plannedAction
+
+
 def huntEnemy(body):
     """
     guess that enemy is moving three blocks in direction from last seen position

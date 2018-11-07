@@ -37,8 +37,6 @@ def enemyNearby(body):
         print("Enemy nearby")
         retval = True
 
-        print("Body to write")
-        print(body)
         writeToFile(body, BODY_FILENAME)
     except KeyError:
         return False
