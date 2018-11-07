@@ -97,7 +97,6 @@ def chooseAction(body):
             print("Moving towards nearest heart @ ", hx, hy)
 
     prev_body = readFromFile(BODY_FILENAME)
-    print("Previous body:")
     pprint(prev_body)
 
     if enemyNearby(body):       #battle formation
@@ -122,6 +121,7 @@ def chooseAction(body):
             print("Looking at enemy")
             action = lookAtEnemy(body)
     elif enemyNearby(prev_body):
+        print("Enemy nearby prev body")
         action = huntEnemy(body)
     
     return action

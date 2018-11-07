@@ -185,11 +185,8 @@ def readFromFile(filename):
         state = {}
         with open(filename, "r") as f:
             state = json.load(f)
-        print("Read from file: ", filename)
-        print(state)
-    except IOError as ioerr:
-        print("File not found", ioerr)
-        state = {}
+        # print("Read from file: ", filename)
+        # print(state)
     except:
         print("Something went wrong reading file...")
         print(sys.exc_info())
