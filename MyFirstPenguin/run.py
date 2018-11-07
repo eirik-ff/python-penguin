@@ -8,6 +8,7 @@ from utilities import *
 from movement import *
 from eirik import *
 from pprint import pprint
+import time
 
 """
 tactics:
@@ -31,6 +32,7 @@ elif req_params_query == "command":
     print("Visibility: ", body['visibility'])
     returnObject["command"] = chooseAction(body)
     print("------------------ END RESPONSE ------------------")
+    time.sleep(0.5)
 
 
 
