@@ -6,6 +6,9 @@ from math import sqrt
 import json
 
 
+STATE_FILENAME = "state.json"
+
+
 def lookAtEnemy(body):
     """
     skal snu seg mot fienden
@@ -159,9 +162,8 @@ def winningTheBattle(body):
     return True
 
 
-def readFromFile():
-    FILENAME = "state.json"
-    f = open(FILENAME, "r")
+def readFromFile(filename):
+    f = open(filename, "r")
     state = f.read()
     state = json.read(state)
     f.close()
@@ -169,9 +171,11 @@ def readFromFile():
     return state
 
 
-def writeToFile(state):
-    FILENAME = "state.json"
-    f = open(FILENAME, "w")
+def writeToFile(state, filename):
+    """
+    state must be dict
+    """
+    f = open(filename, "w")
     f.write(json.dump(state))
     f.close()
 
