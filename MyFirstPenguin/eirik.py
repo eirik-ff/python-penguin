@@ -61,15 +61,38 @@ def lookAtEnemy(body):
     d_val = DIR_VALUE[d]
     new_d_val = DIR_VALUE[new_d]
 
-    dist = new_d_val - d_val
-    if d_val == 0 and new_d == 3:
-        action = ROTATE_RIGHT
-    elif d_val == 3 and new_d == 0:
-        action = ROTATE_LEFT
-    elif dist > 0:
-        action = ROTATE_LEFT
-    elif dist < 0:
-        action = ROTATE_RIGHT
+
+    if d_val == 0:
+        if new_d_val == 1:
+            action = ROTATE_LEFT
+        elif new_d_val == 3:
+            action = ROTATE_RIGHT
+
+    elif d_val == 1:
+        if new_d_val == 0:
+            action = ROTATE_RIGHT
+        elif new_d_val == 2:
+            action = ROTATE_LEFT
+
+    elif d_val == 2:
+        if new_d_val == 1:
+            action = ROTATE_RIGHT
+        elif new_d_val == 3:
+            action = ROTATE_LEFT
+
+    elif d_val == 3:
+        if new_d_val == 0:
+            action = ROTATE_RIGHT
+        elif new_d_val == 2:
+            action = ROTATE_LEFT
+
+    else:
+        dist = new_d_val - d_val
+        if dist > 0:
+            action = ROTATE_LEFT
+        elif dist < 0:
+            action = ROTATE_RIGHT
+
 
     return action
 
