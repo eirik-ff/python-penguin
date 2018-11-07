@@ -67,7 +67,9 @@ def moveTowardsCenterOfMap(body):
     centerPointY = math.floor(body["mapHeight"] / 2)
     return moveTowardsPoint(body, centerPointX, centerPointY)
 
-
+"""
+flytt combatmode ned i choose action
+"""
 def chooseAction(body):
     action = PASS
     #action = moveTowardsCenterOfMap(body)
