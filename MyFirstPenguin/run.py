@@ -32,7 +32,7 @@ elif req_params_query == "command":
     print("------------------ END RESPONSE ------------------")
 
 
-with open("testfile.txt", "a") as f:
+with open("testfile.txt", "a+") as f:
     print("File:\n", f.read())
     f.write("Hello!\n")
 
