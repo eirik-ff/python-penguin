@@ -105,7 +105,7 @@ def chooseAction(body):
     if len(state) == 0:  # emptyd dict
         state["safeHeartHarvest"] = False
 
-    if state["safeHeartHarvest"] = True:
+    if state["safeHeartHarvest"] == True:
         action = moveTowardsPoint(body, hx, hy)
 
 
