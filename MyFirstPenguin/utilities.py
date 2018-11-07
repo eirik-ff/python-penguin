@@ -52,13 +52,7 @@ def moveTowardsPoint(body, pointX, pointY):
     elif penguinPositionY > pointY:
         plannedAction = MOVE_UP[bodyDirection]
 
-    if enemyNearby(body):       #battle formation
-        if shootIfPossible(body):
-            plannedAction = SHOOT
-        else:
-            plannedAction = lookAtEnemy(body)
-
-    elif plannedAction == ADVANCE and wallInFrontOfPenguin(body):
+    if plannedAction == ADVANCE and wallInFrontOfPenguin(body):
         plannedAction = SHOOT
 
     return plannedAction
@@ -78,6 +72,7 @@ def chooseAction(body):
     #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
     bx, by = closestPowerup(body)
     hx, hy = findClosestHeart(body)
+
     if bx == -1:
         action = moveTowardsCenterOfMap(body)
         print("Moving to center of map")
@@ -88,7 +83,16 @@ def chooseAction(body):
         if lowerHealthThanEnemy(body) and hx != -1:
             action = moveTowardsPoint(body, hx, hy)
             print("Moving towards nearest heart @ ", hx, hy)
-            
+
+
+    if enemyNearby(body):       #battle formation
+        if lowerHealthThanEnemy(body):
+            action=safeHeartHarvest(body)           #returner en action eller retreat hvis ingen hjerter mulig
+        elif shootIfPossible(body):
+            action = SHOOT
+        else:
+            action = lookAtEnemy(body)
+
     return action
 
 
