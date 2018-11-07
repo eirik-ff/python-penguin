@@ -33,6 +33,7 @@ elif req_params_query == "command":
 
 
 with open("testfile.txt", "a") as f:
+    print("File:\n", f.read())
     f.write("Hello!\n")
 
 response["body"] = returnObject
