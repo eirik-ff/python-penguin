@@ -6,6 +6,7 @@ import math
 import sys
 from utilities import *
 from movement import *
+from pprint import pprint
 
 
 """
@@ -29,6 +30,7 @@ elif req_params_query == "command":
     print("------------------ NEW RESPONSE ------------------")
     print("Visibility: ", body['visibility'])
     returnObject["command"] = chooseAction(body)
+    pprint(returnObject)
     print("------------------ END RESPONSE ------------------")
 
 response["body"] = returnObject
