@@ -93,16 +93,18 @@ def chooseAction(body):
             action = moveTowardsPoint(body, hx, hy)
             print("Moving towards nearest heart @ ", hx, hy)
 
+    prev_body = readFromFile(BODY_FILENAME)
 
     if enemyNearby(body):       #battle formation
         state = readFromFile(STATE_FILENAME)
         if not winningTheBattle(body):                        #lavere enn fiendens
-            print("Not winning battle")
-            #action=safeHeartHarvest(body)           
-            if state["safeHeartHarvest"]==False:
-                state["safeHeartHarvest"] = True
-                writeToFile(state, STATE_FILENAME)
-                return RETREAT
+            print("Not winning battle")          
+            state["safeHeartHarvest"] = True
+            writeToFile(state, STATE_FILENAME)
+            
+            sx, sy = safeHeartHarvest(body)
+
+            return RETREAT
             
         elif shootIfPossible(body):
             print("Shooting")
@@ -110,12 +112,38 @@ def chooseAction(body):
         else:
             print("Looking at enemy")
             action = lookAtEnemy(body)
+    elif enemyNearby(prev_body):
+        action = huntEnemy(body)
     
     return action
 
 
 def safeHeartHarvest(body):
-    return RETREAT
+    goodX, goodY = safePlace(body):
+
+    hearts = [b for b in body["bonusTiles"] if b['type'] == 'strength' and not(heart["x"] in goodX and heart["y"] in goodY)]
+    if len(hearts) == 0:
+        return -1, -1
+
+    
+    you = body['you']
+    x = you['x']
+    y = you['y']
+
+    m = 1000000
+    m_heart = heart    
+    
+
+    for heart in hearts:
+        d = sqrt((x - heart['x'])**2 + (y - heart['y'])**2)
+        if d < m:
+            m = d
+            m_heart = heart
+
+    return m_heart["x"], m_heart["y"]
+
+def safePlace(body):
+    pass
 
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):

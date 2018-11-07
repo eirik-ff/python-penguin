@@ -203,3 +203,52 @@ def writeToFile(state, filename):
         return True
     except:
         return False
+
+
+def huntEnemy(body):
+    """
+    guess that enemy is moving three blocks in direction from last seen position
+    """
+    GUESS = 3
+    action = PASS
+
+    max_x = body['mapWidth']
+    max_y = body['mapHeight']    
+    
+    you = body['you']
+    x = you['x']
+    y = you['y']
+
+    prev_body = readFromFile(BODY_FILENAME)
+    enemy = prev_body['enemies'][0]
+    ex = enemy['x']
+    ey = enemy['y']    
+    ed = enemy['direction']
+    
+    if ed == "right":
+        new_x = ex + GUESS
+        new_y = ey
+
+        if new_x >= max_x:
+            new_x = max_x - 1
+    elif ed == "top":
+        new_x = ex
+        new_y = ey - GUESS
+
+        if new_y < 0:
+            new_y = 0
+    elif ed == "left":
+        new_x = ex - GUESS
+        new_y = ey
+
+        if new_x < 0:
+            new_x = 0
+    elif ed == "bottom":
+        new_x = ex
+        new_y = ey + GUESS  
+
+        if new_y >= max_y:
+            new_y = max_y - 1      
+
+    action = moveTowardsPoint(body, new_x, new_y)
+    return action
