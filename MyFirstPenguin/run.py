@@ -26,6 +26,10 @@ returnObject = {}
 if req_params_query == "info":
     returnObject["name"] = "Operator Noot"
     returnObject["team"] = "Penguin Team Six"
+
+    with open(BODY_FILENAME, "w") as f:
+        f.write("")
+    print("!!! Cleared file !!!")
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
     print("\n\n------------------ NEW RESPONSE ------------------")

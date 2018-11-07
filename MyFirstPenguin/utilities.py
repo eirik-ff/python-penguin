@@ -105,6 +105,10 @@ def chooseAction(body):
     if len(state) == 0:  # emptyd dict
         state["safeHeartHarvest"] = False
 
+    if state["safeHeartHarvest"] = True:
+        action = moveTowardsPoint(body, hx, hy)
+
+
     if enemyNearby(body):       #battle formation                        
         if not winningTheBattle(body):                        #lavere enn fiendens
             print("Not winning battle")          
