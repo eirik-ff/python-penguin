@@ -159,7 +159,7 @@ def winningTheBattle(body):
     if enemyFacingYou(body) and lowerHealthThanEnemy(body) and \
         weaponDamage <= eWeaponDamage:
         return False
-    
+    print("winningBattle() is running")
     return True
 
 
