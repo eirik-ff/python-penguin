@@ -50,6 +50,7 @@ def moveTowardsPoint(body, pointX, pointY):
         plannedAction = MOVE_UP[bodyDirection]
 
     if enemyNearby(body):       #battle formation
+        print("Enemy nearby")
         if shootIfPossible(body):
             plannedAction = SHOOT
         else:
@@ -80,6 +81,7 @@ def chooseAction(body):
 
         if lowerHealthThanEnemy(body):
             action = moveTowardsPoint(body, hx, hy)
+            print("Moving towards nearest heart")
             
     return action
 
