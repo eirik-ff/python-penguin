@@ -6,7 +6,6 @@ from martin import *
 def doesCellContainWall(walls, x, y):
     for wall in walls:
         if wall["x"] == x and wall["y"] == y:
-            print("Enemy nearby")
             return True
     return False
 
@@ -30,6 +29,7 @@ def wallInFrontOfPenguin(body):
 def enemyNearby(body):
     try:
         temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
+        print("Enemy nearby")
         return True
     except:
         return False
