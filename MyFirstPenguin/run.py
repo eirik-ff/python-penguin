@@ -30,16 +30,7 @@ elif req_params_query == "command":
     print("Visibility: ", body['visibility'])
     returnObject["command"] = chooseAction(body)
     print("------------------ END RESPONSE ------------------")
-
-
-f = open("testfile.txt", "r")
-c = f.read()
-print("File:\n", c)
-f.close()
-
-f = open("testfile.txt", "w")
-f.write(c + "Hello!\n")
-f.close()
+    
 
 
 response["body"] = returnObject

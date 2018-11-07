@@ -3,6 +3,7 @@ from movement import *
 from utilities import *
 from martin import *
 from math import sqrt
+import json
 
 
 def lookAtEnemy(body):
@@ -147,8 +148,6 @@ def enemyFacingYou(body):
     return False
 
 
-
-
 def winningTheBattle(body):
     weaponDamage = body['you']['weaponDamage']
     eWeaponDamage = body['enemies'][0]['weaponDamage']
@@ -157,4 +156,23 @@ def winningTheBattle(body):
         weaponDamage <= eWeaponDamage:
         return False
     
+    return True
+
+
+def readFromFile():
+    FILENAME = "state.json"
+    f = open(FILENAME, "r")
+    state = f.read()
+    state = json.read(state)
+    f.close()
+
+    return state
+
+
+def writeToFile(state):
+    FILENAME = "state.json"
+    f = open(FILENAME, "w")
+    f.write(json.dump(state))
+    f.close()
+
     return True
