@@ -29,7 +29,7 @@ def lookAtEnemy(body):
 
     dx = ex - x
     dy = ey - y
-    print("x y ex ey", x, y, ex, ey, sqrt(dx**2 + dy**2))
+    print("x y ex ey d", x, y, ex, ey, sqrt(dx**2 + dy**2))
 
     if ey < y:  # enemy above
         if abs(dx) > abs(dy):
