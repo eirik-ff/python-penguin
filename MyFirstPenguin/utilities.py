@@ -9,6 +9,7 @@ def doesCellContainWall(walls, x, y):
             return True
     return False
 
+
 def wallInFrontOfPenguin(body):
     xValueToCheckForWall = body["you"]["x"]
     yValueToCheckForWall = body["you"]["y"]
@@ -31,6 +32,7 @@ def enemyNearby(body):
         return True
     except:
         return False
+
 
 def moveTowardsPoint(body, pointX, pointY):
     penguinPositionX = body["you"]["x"]
@@ -58,10 +60,12 @@ def moveTowardsPoint(body, pointX, pointY):
 
     return plannedAction
 
+
 def moveTowardsCenterOfMap(body):
     centerPointX = math.floor(body["mapWidth"] / 2)
     centerPointY = math.floor(body["mapHeight"] / 2)
     return moveTowardsPoint(body, centerPointX, centerPointY)
+
 
 def chooseAction(body):
     action = PASS
@@ -74,10 +78,12 @@ def chooseAction(body):
         action = moveTowardsPoint(body, bx, by)
     return action
 
+
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
     distX = myPosX - enPosX
     distY = myPosY - enPosY
     return distX, distY
+
 
 def smallestDistanceToEnemy(body, myPosX, myPosY, enPosX, enPosY):
     distX, distY = distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY)

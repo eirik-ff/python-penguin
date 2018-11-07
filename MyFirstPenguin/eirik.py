@@ -19,7 +19,6 @@ def lookAtEnemy(body):
     x = you['x']
     y = you['y']
     d = you['direction']
-    w_range = you['weaponRange']
     new_d = "right"
     action = PASS
 
