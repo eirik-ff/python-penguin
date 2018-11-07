@@ -179,8 +179,12 @@ def writeToFile(state, filename):
     """
     state must be dict
     """
-    f = open(filename, "w")
-    f.write(json.dump(state))
-    f.close()
+    try:
+        f = open(filename, "w")
+        f.write(json.dump(state))
+        f.close()
 
-    return True
+        print("Wrote to file")
+        return True
+    except:
+        return False

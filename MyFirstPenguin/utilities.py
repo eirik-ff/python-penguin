@@ -32,7 +32,7 @@ def enemyNearby(body):
     try:
         temp = body["enemies"][0]["x"]      #If the position exists, then the enemy is in vision
         print("Enemy nearby")
-        #writeToFile(body, STATE_FILE)
+        writeToFile(body, STATE_FILE)
         return True
     except:
         return False
