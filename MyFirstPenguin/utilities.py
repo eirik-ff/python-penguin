@@ -3,6 +3,12 @@ import math
 from eirik import *
 from martin import *
 
+def print(*args):
+    """
+    fordi serveren kjører python2 og den har ikke en fin print-funksjon
+    """
+    print(" ".join(args))
+
 def doesCellContainWall(walls, x, y):
     for wall in walls:
         if wall["x"] == x and wall["y"] == y:
@@ -106,3 +112,4 @@ def smallestDistanceToEnemy(body, myPosX, myPosY, enPosX, enPosY):
 
 def distanceBetweenPoints(x1, y1, x2, y2):
     return ( (x1 - x2)**2 + (y1 - y2)**2 )**(1/2)
+
