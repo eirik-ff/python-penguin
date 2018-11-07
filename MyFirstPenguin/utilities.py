@@ -102,6 +102,9 @@ def chooseAction(body):
 
     if enemyNearby(body):       #battle formation
         state = readFromFile(STATE_FILENAME)
+        if len(state) == 0:  # empty dict
+            state["safeHeartHarvest"] = False
+                        
         if not winningTheBattle(body):                        #lavere enn fiendens
             print("Not winning battle")          
             state["safeHeartHarvest"] = True
@@ -110,8 +113,8 @@ def chooseAction(body):
             sx, sy = safeHeartHarvest(body)
             #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
             
-        if state["safeHeartHarvest"] == False: pass
-#kan vi bare pushe en update? :D
+        #if state["safeHeartHarvest"] == False: pass
+
         elif shootIfPossible(body):
             print("Shooting")
             action = SHOOT
