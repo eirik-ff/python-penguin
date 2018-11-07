@@ -86,14 +86,19 @@ def chooseAction(body):
 
 
     if enemyNearby(body):       #battle formation
-        if lowerHealthThanEnemy(body):
-            action=safeHeartHarvest(body)           #returner en action eller retreat hvis ingen hjerter mulig
+        if not winningTheBattle(body):                        #lavere enn fiendens
+            #action=safeHeartHarvest(body)           #returner en action eller retreat hvis ingen hjerter mulig
+            return RETREAT
         elif shootIfPossible(body):
             action = SHOOT
         else:
             action = lookAtEnemy(body)
 
     return action
+
+
+def safeHeartHarvest(body):
+    return RETREAT
 
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
