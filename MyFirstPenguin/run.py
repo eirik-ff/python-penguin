@@ -24,7 +24,7 @@ response = {}
 returnObject = {}
 if req_params_query == "info":
     returnObject["name"] = "Pingu Noot Noot"
-    returnObject["team"] = "Team Python 3"
+    returnObject["team"] = "Penguin Team Six"
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
     print("------------------ NEW RESPONSE ------------------")

@@ -6,6 +6,7 @@ from math import sqrt
 import json
 
 
+BODY_FILENAME = "body.json"
 STATE_FILENAME = "state.json"
 
 
@@ -163,10 +164,13 @@ def winningTheBattle(body):
 
 
 def readFromFile(filename):
-    f = open(filename, "r")
-    state = f.read()
-    state = json.read(state)
-    f.close()
+    try:
+        f = open(filename, "r")
+        state = f.read()
+        state = json.read(state)
+        f.close()
+    except:
+        state = {}
 
     return state
 
