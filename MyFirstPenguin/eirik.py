@@ -250,5 +250,6 @@ def huntEnemy(body):
         if new_y >= max_y:
             new_y = max_y - 1      
 
+    print("Hunting towards", new_x, new_y)
     action = moveTowardsPoint(body, new_x, new_y)
     return action

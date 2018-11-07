@@ -119,7 +119,7 @@ def chooseAction(body):
 
 
 def safeHeartHarvest(body):
-    goodX, goodY = safePlace(body):
+    goodX, goodY = safePlace(body)
 
     hearts = [b for b in body["bonusTiles"] if b['type'] == 'strength' and not(heart["x"] in goodX and heart["y"] in goodY)]
     if len(hearts) == 0:
