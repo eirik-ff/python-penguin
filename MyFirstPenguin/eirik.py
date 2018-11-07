@@ -210,6 +210,8 @@ def writeToFile(state, filename):
         print("Wrote to file")
         return True
     except:
+        print("Error writing")
+        print(sys.exc_info())
         return False
 
 
