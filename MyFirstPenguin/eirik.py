@@ -1,5 +1,6 @@
 from movement import *
 from utilities import *
+from math import sqrt
 
 def lookAtEnemy(body):
     """
