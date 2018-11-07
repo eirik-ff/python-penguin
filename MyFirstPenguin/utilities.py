@@ -83,7 +83,7 @@ def chooseAction(body):
         action = moveTowardsPoint(body, bx, by)
         print("Moving towards closest powerup @ ", bx, by)
 
-        if lowerHealthThanEnemy(body):
+        if lowerHealthThanEnemy(body) and hx != -1:
             action = moveTowardsPoint(body, hx, hy)
             print("Moving towards nearest heart @ ", hx, hy)
             
