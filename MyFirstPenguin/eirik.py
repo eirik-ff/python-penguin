@@ -75,31 +75,46 @@ def lookAtEnemy(body):
             action = ROTATE_LEFT
         elif new_d_val == 3:
             action = ROTATE_RIGHT
+        elif new_d_val == 2:
+            if ey < y:
+                action = ROTATE_LEFT
+            elif ey > y:
+                action = ROTATE_RIGHT
 
     elif d_val == 1:
         if new_d_val == 0:
             action = ROTATE_RIGHT
         elif new_d_val == 2:
             action = ROTATE_LEFT
+        elif new_d_val == 3:
+            if ex > x:
+                action = ROTATE_RIGHT
+            elif ex < x:
+                action = ROTATE_LEFT
 
     elif d_val == 2:
         if new_d_val == 1:
             action = ROTATE_RIGHT
         elif new_d_val == 3:
             action = ROTATE_LEFT
+        elif new_d_val == 0:
+            if ey < y:
+                action = ROTATE_RIGHT
+            elif ey > y:
+                action = ROTATE_LEFT
 
     elif d_val == 3:
         if new_d_val == 0:
             action = ROTATE_RIGHT
         elif new_d_val == 2:
             action = ROTATE_LEFT
-
+        elif new_d_val == 1:
+            if ex > x:
+                action = ROTATE_LEFT
+            elif ex < x:
+                action = ROTATE_RIGHT
     else:
-        dist = new_d_val - d_val
-        if dist > 0:
-            action = ROTATE_LEFT
-        elif dist < 0:
-            action = ROTATE_RIGHT
+        print("Looking at enemy: else????????")
 
     print("Looking at enemy")
     return action
