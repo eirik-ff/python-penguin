@@ -37,6 +37,8 @@ def enemyNearby(body):
         print("Enemy nearby")
         retval = True
 
+        print("Body to write")
+        print(body)
         writeToFile(body, BODY_FILENAME)
     except KeyError:
         return False
@@ -106,9 +108,10 @@ def chooseAction(body):
             writeToFile(state, STATE_FILENAME)
             
             sx, sy = safeHeartHarvest(body)
-
-            return RETREAT
+            #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
             
+        if state["safeHeartHarvest"] == False: pass
+#kan vi bare pushe en update? :D
         elif shootIfPossible(body):
             print("Shooting")
             action = SHOOT
@@ -143,7 +146,7 @@ def safeHeartHarvest(body):
 def safePlace(body):
     goodX = [] 
     goodY = []
-        
+    #returnerer liste med lovlige x og y posisjoner (se 2. linje i safeHeartHarvest)        
     return goodX, goodY
 
 
