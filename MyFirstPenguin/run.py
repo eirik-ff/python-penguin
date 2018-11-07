@@ -32,9 +32,10 @@ elif req_params_query == "command":
     print("------------------ END RESPONSE ------------------")
 
 
-with open("testfile.txt", "a+") as f:
-    print("File:\n", f.read())
-    f.write("Hello!\n")
+f = open("testfile.txt", "a+")
+print("File:\n", f.read())
+f.write("Hello!\n")
+f.close()
 
 response["body"] = returnObject
 responseBody.write(json.dumps(response))
