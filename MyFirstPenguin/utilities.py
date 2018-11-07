@@ -4,6 +4,7 @@ import math
 from eirik import *
 from martin import *
 import sys
+from pprint import pprint
 
 
 def doesCellContainWall(walls, x, y):
@@ -94,6 +95,8 @@ def chooseAction(body):
             print("Moving towards nearest heart @ ", hx, hy)
 
     prev_body = readFromFile(BODY_FILENAME)
+    print("Previous body:")
+    pprint(prev_body)
 
     if enemyNearby(body):       #battle formation
         state = readFromFile(STATE_FILENAME)
@@ -120,20 +123,15 @@ def chooseAction(body):
 
 def safeHeartHarvest(body):
     goodX, goodY = safePlace(body)
-
     hearts = [b for b in body["bonusTiles"] if b['type'] == 'strength' and not(heart["x"] in goodX and heart["y"] in goodY)]
     if len(hearts) == 0:
         return -1, -1
-
-    
     you = body['you']
     x = you['x']
     y = you['y']
 
     m = 1000000
     m_heart = heart    
-    
-
     for heart in hearts:
         d = sqrt((x - heart['x'])**2 + (y - heart['y'])**2)
         if d < m:
@@ -143,7 +141,9 @@ def safeHeartHarvest(body):
     return m_heart["x"], m_heart["y"]
 
 def safePlace(body):
-    pass
+    goodX = [] goodY = []
+    
+    return goodX, goodY
 
 
 def distanceToEnemyXandY(body, myPosX, myPosY, enPosX, enPosY):
