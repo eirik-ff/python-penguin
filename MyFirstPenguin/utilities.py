@@ -77,8 +77,7 @@ def moveTowardsCenterOfMap(body):
 flytt combatmode ned i choose action
 """
 def chooseAction(body):
-    
-    
+    state = readFromFile(STATE_FILENAME)
     action = PASS
     #action = moveTowardsCenterOfMap(body)
     #action = moveTowardsPoint(body, body["enemies"][0]["x"], body["enemies"][0]["y"])
@@ -102,21 +101,20 @@ def chooseAction(body):
             print("Moving towards nearest heart @ ", hx, hy)
 
     prev_body = readFromFile(BODY_FILENAME)
+    state = readFromFile(STATE_FILENAME)
+    if len(state) == 0:  # emptyd dict
+        state["safeHeartHarvest"] = False
 
-    if enemyNearby(body):       #battle formation
-        state = readFromFile(STATE_FILENAME)
-        if len(state) == 0:  # emptyd dict
-            state["safeHeartHarvest"] = False
-                        
+    if enemyNearby(body):       #battle formation                        
         if not winningTheBattle(body):                        #lavere enn fiendens
             print("Not winning battle")          
             state["safeHeartHarvest"] = True
             writeToFile(state, STATE_FILENAME)
-            return retreat
+            
             #sx, sy = safeHeartHarvest(body)
             #action = moveTowardsPoint(body, sx, sy)        Denne flyttes utenfor if statement
             
-        #if state["safeHeartHarvest"] == False: pass
+        
 
         elif shootIfPossible(body):
             print("Shooting")
@@ -124,7 +122,8 @@ def chooseAction(body):
         else:
             print("Looking at enemy")
             action = lookAtEnemy(body)
-    elif enemyNearby(prev_body):
+
+    elif enemyNearby(prev_body) and state["safeHeartHarvest"]==False:
         hunt_x, hunt_y = huntingPoint(prev_body)
         print("Enemy nearby prev body")
         radius = 2
