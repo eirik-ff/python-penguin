@@ -25,8 +25,9 @@ if req_params_query == "info":
     returnObject["team"] = "Team Python 3"
 elif req_params_query == "command":    
     body = json.loads(open(env["req"], "r").read())
+    print("------------------ NEW RESPONSE ------------------")
     returnObject["command"] = chooseAction(body)
-    print("stdout: NEW COMMAND!!!")
+    print("------------------ END RESPONSE ------------------")
 
 response["body"] = returnObject
 responseBody.write(json.dumps(response))
